@@ -1,17 +1,17 @@
 #include "shell.h"
 
 /**
- * hsh main shell loop
- * info parameter & return info struct
- * @av agurment vector from main
- * return on success 0 and on error 1
+ * hsh - main shell loop
+ * @info: parameter & return info struct
+ * @av: agurment vector from main
+ * Return: on success 0 and on error 1
  */
 int hsh(info_t *info, char **av)
 {
 	ssize_t r = 0;
 	int builtin_ret = 0;
 
-	while (r != -1 && builtin_ret!= -2)
+	while (r != -1 && builtin_ret != -2)
 	{
 		clear_info(info);
 		if (interactive(info))
@@ -42,12 +42,6 @@ int hsh(info_t *info, char **av)
 	return (builtin_ret);
 }
 
-/**
- * find_builtin find a builtin cmd
- * @info parameter and return onfo struct
- * return if buitin not found -1 otherwise if builtin executed well 0
- * then if builtin found but not successful 1 otherwise 2 if builtin signals exits()
- */
 int find_builtin(info_t *info)
 {
 	int n, built_in_ret = -1;
@@ -75,9 +69,9 @@ int find_builtin(info_t *info)
 }
 
 /**
- * find_cmd finds a cmd in path
- * @info parameter and return info
- * return void
+ * find_cmd - finds a cmd in path
+ * @info: parameter and return info
+ * Return: void
  */
 void find_cmd(info_t *info)
 {
@@ -105,9 +99,9 @@ void find_cmd(info_t *info)
 	else
 	{
 		if ((interactive(info) || _getenv(info, "PATH=")
-					|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
+					|| info->argv[0][0] == "/") && is_cmd(info, info->argv[0]))
 			fork_cmd(info);
-		else if (*(info->arg) != '/')
+		else if (*(info->arg) != "/")
 		{
 			info->status = 127;
 			print_error(info,"not found\n");
@@ -115,11 +109,10 @@ void find_cmd(info_t *info)
 	}
 }
 
-
 /**
- * fork_cmd fork an exec thread to runcmd
- * @info the parameter and return
- * return void
+ * fork_cmd - fork an exec thread to runcmd
+ * @info: the parameter and return
+ * return: void
  */
 void fork_cmd(info_t *info)
 {

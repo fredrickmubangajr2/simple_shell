@@ -67,21 +67,21 @@ int print_alias(list_t *node)
 	{
 		p = _strchr(node->str, '=');
 
-	for (a = node->str; a <= p ; a++);
+	for (a = node->str; a <= p; a++)
 
 		_putchar(*a);
 		_putchar('\');
 		_puts(p + 1);
-		_PUTS('\n');
+		_puts('\n');
 		return (0);
 	}
 	return (1);
 }
 
 /**
- * _myalias - copies alias builtin
- * @info: structure containing potential arguments
- * Return: always (0)
+ * _myalias - mimics the alias builtin
+ * @info: Structure containing potential arguments.
+ *  Return: Always 0
  */
 int _myalias(info_t *info)
 {
@@ -92,6 +92,7 @@ int _myalias(info_t *info)
 	if (info->argc == 1)
 	{
 		node = info->alias;
+
 		while (node)
 		{
 			print_alias(node);
@@ -101,12 +102,11 @@ int _myalias(info_t *info)
 	}
 	for (n = 1; info->argv[n]; n++)
 	{
-		p = strchr(info->argv[n], '=' );
-		
+		p = _strchr(info->argv[n], "=");
 		if (p)
 			set_alias(info, info->argv[n]);
 		else
-			print_alias(node_starts_with(info->alias, info->argv[n], '=' ));
+			print_alias(node_starts_with(info->alias, info->argv[n], "="));
 	}
-	return (0)
+	return (0);
 }

@@ -35,9 +35,8 @@
 extern char **environ;
 
 /**
- * listtstr - singly list linked
+ * struct liststr - singly list linked
  * @str: str
- * @liststr: str
  * @next: points the next node
  * @num: num field
  */
@@ -97,10 +96,10 @@ info_t;
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 		0, 0, 0}
 /**
- * struct  builtin -  contains builtin str & related func
+ * struct builtin -  contains builtin str & related func
  * @type: builtin cmd flag
  * @func: function
- * @struck builtin
+ * @struct builtin: typedef
  */
 typedef struct builtin
 {
