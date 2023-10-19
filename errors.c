@@ -1,15 +1,15 @@
 #include "shell.h"
 
 /**
- * _eputs prints input string
- * @str string to be printed
- * return nothing
+ * _eputs - prints input string
+ * @str: string to be printed
+ * Return nothing
  */
 void_eputs(char *str)
 {
 	int n = 0;
 
-	if(!str)
+	if (!str)
 		return;
 	while (str[n] != '\0')
 	{
@@ -19,10 +19,9 @@ void_eputs(char *str)
 }
 
 /**
- * _eputchar writes char c to stderr
- * @c char to print
- * return 1 on sucess.therwise -1 on error
- * errno is set appropriately.
+ * _eputchar - writes char c to stderr
+ * @c: char to print
+ * Return: 1 on sucess.therwise -1 on error, errno is set appropriately.
  */
 int _eputchar(char c)
 {
@@ -35,17 +34,15 @@ int _eputchar(char c)
 		n = 0;
 	}
 	if (c != BUF_FLUSH)
-		buff[n==] =c;
+		buff[n++] = c;
 	return (1);
 }
 
 /**
- * _eputfd write char c to fd
- * @c char to print
- * @fd filedescriptor
- * return 1 on sucess
- * return -1 on error
- * errno set appropriately
+ * _putfd - write char c to fd
+ * @c: char to print
+ * @fd: filedescriptor
+ * Return: 1 on sucess, -1 on error, errno set appropriately
  */
 int _putfd(char c, int fd)
 {
@@ -63,19 +60,20 @@ int _putfd(char c, int fd)
 }
 
 /**
- * _putsfd printsinput string
- * @str printed string
- * @fdfiledescriptor
- * return num of chars.
+ * _putsfd - printsinput string
+ * @str: printed string
+ * @fd: filedescriptor
+ * Return: num of chars.
  */
-int _putsfd(char*str, int fd)
+int _putsfd(char *str, int fd)
 {
 	int n = 0;
+
 	if (!str)
 		return (0);
 	while (*str)
 	{
-		n +=_putfd(*str++, fd);
+		n += _putfd(*str++, fd);
 	}
 	return (n);
 }

@@ -1,15 +1,15 @@
 #include "shell.h"
 
 /**
- * _myexit exits shell
- * @info Structure containing potential argument
- * return exits with given exit status (0) if info.argv[0] != "exit"
+ * _myexit - exits shell
+ * @info: Structure containing potential argument
+ * Return: exits given exit status (0) if info.argv[0] != "exit"
  */
 int _myexit(info_t *info)
 {
 	int exitcheck;
 
-	if (info->argv[1]) /* If there is an exit arguement */
+	if (info->argv[1])
 	{
 		exitcheck = _erratoi(info->argv[1]);
 		if (exitcheck == -1)
@@ -28,9 +28,9 @@ int _myexit(info_t *info)
 }
 
 /**
- * _mycd changes current dir process
- * @info structure containing potential argument
- * return always 0
+ * _mycd - changes current dir process
+ * @info: structure containing potential argument
+ * Return: always 0
  */
 int _mycd(info_t *info)
 {
@@ -77,9 +77,9 @@ int _mycd(info_t *info)
 }
 
 /**
- * _myhelp changes current dir process
- * @info structure containing potential arguments
- * return always 0
+ * _myhelp - changes current dir process
+ * @info: structure containing potential arguments
+ * Return: always 0
  */
 int _myhelp(info_t *info)
 {

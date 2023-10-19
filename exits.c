@@ -1,15 +1,15 @@
 #include "shell.h"
 
 /**
- * _strcpy copy str
- * @m amount of char to be cpy
- * @dest destination str to be cpy
- * src source str
- * return concatenate str
+ * _strncpy - copy str
+ * @m: amount of char to be cpy
+ * @dest: destination str to be cpy
+ * @src: source str
+ * Return: concatenate str
  */
-char *_strmcpy(char *dest, char *src,  int m)
+char *_strncpy(char *dest, char *src,  int m)
 {
-	int m,k;
+	int m, k;
 	char *s = dest;
 
 	n = 0;
@@ -27,19 +27,19 @@ char *_strmcpy(char *dest, char *src,  int m)
 			k++;
 		}
 	}
-	return (s)
+	return (s);
 }
 
 /**
- * _strncat concatenate two str
- * @src second str
- * @dest firststr
- * @m amount of bytes maximally used
- * return concatenated str
+ * _strncat - concatenate two str
+ * @src: second str
+ * @dest: firststr
+ * @m: amount of bytes maximally used
+ * Return: concatenated str
  */
-char*_strncat(char *dest, char  *src, int m)
+char *_strncat(char *dest, char  *src, int m)
 {
-	int n,k;
+	int n, k;
 	char *s = dest;
 
 	n = 0;
@@ -58,18 +58,16 @@ char*_strncat(char *dest, char  *src, int m)
 }
 
 /**
- * _strchr locate char in a str
- * @s str to be parsed
- * @c charlook for
- * return  pointers to memory area s
+ * _strchr - locate char in a str
+ * @s: str to be parsed
+ * @c: charlook for
+ * Return:  pointers to memory area s
  */
 char *_strchr(char *s, char c)
 {
-	do
-	{
-		if(*s == char c)
+	do {
+		if (*s == char c)
 			return (s);
-	}
-	while (*s++ != '\0');
+	} while (*s++ != '\0');
 	return (NULL);
 }

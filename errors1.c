@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * _erratoi converts a str to an int
- * @s str to be converted to int
- * return 0 no num in str || -1 on error
+ * _erratoi - converts a str to an int
+ * @s: str to be converted to int
+ * Return 0 no num in str || -1 on error
  */
 int_erratoi(char *s)
 {
@@ -28,10 +28,10 @@ int_erratoi(char *s)
 }
 
 /**
- * print_error outputs an error massage
- * @info parameter and return info struct
- * @estr strcontaining types of error
- * return no num in str (0)
+ * print_error - outputs an error massage
+ * @info_t: parameter and return info struct
+ * @estr: strcontaining types of error
+ * Return: no num in str (0)
  * otherwise -1 on error
  */
 void print_error(info_t, char *estr)
@@ -46,14 +46,14 @@ void print_error(info_t, char *estr)
 }
 
 /**
- * print_d prints an int in base10
- * @input input
- * @fd filedescriptor
- * return num of char printed.
+ * print_d - prints an int in base10
+ * @input: input
+ * @fd: filedescripto
+ * Return: num of char printed.
  */
-int print_d(int input,int fd)
+int print_d(int input, int fd)
 {
-	int(*_putchar)(char) = _putchar;
+	int (*_putchar)(char) = _putchar;
 	int n, count = 0;
 	unsigned int _abs_, current;
 
@@ -68,11 +68,11 @@ int print_d(int input,int fd)
 	else
 		_abs_ = input;
 	current = _abs_;
-	for (n = 1000000000; n > 1; n/= 10)
+	for (n = 1000000000; n > 1; n /= 10)
 	{
-		if (_abs_/n)
+		if (_abs_ / n)
 		{
-			_putchar('0'  + current/n);
+			_putchar('0' + current / n);
 			count++;
 		}
 		current %= n;
@@ -84,13 +84,13 @@ int print_d(int input,int fd)
 }
 
 /**
- * convert_number conveter function from itoa clone.
- * @num number
- * @flags aguement flag
- * @base base
- * return string
+ * convert_number - conveter function from itoa clone.
+ * @num: number
+ * @flags: aguement flag
+ * @base: base
+ * Return: string
  */
-cha *convert_number(long int num, int base, int flags)
+char *convert_number(long int num, int base, int flags)
 {
 	static char *arrays;
 	static char buffer[50];
@@ -98,22 +98,20 @@ cha *convert_number(long int num, int base, int flags)
 	char *ptr;
 	unsigned long m = num;
 
-	if(!(flags & CONVERT_UNSIGNED) && num < 0)
+	if (!(flags & CONVERT_UNSIGNED) && num < 0)
 	{
 		m = num;
 		sign = '-';
 	}
-	array = flags &  CONVERT_LOWERCASE? "0123456789abdef" :
+	array = flags &  CONVERT_LOWERCASE ? "0123456789abdef" :
 		"0123456789ABCDEF";
 	ptr = &buffer[49];
 	*ptr = '\0';
 
-	do
-	{
+	do {
 		*--ptr = array[m % base];
 		m /= base;
-	}
-	while (m != 0);
+	} while (m != 0);
 
 	if  (sign)
 		*--ptr = sign;
@@ -121,9 +119,9 @@ cha *convert_number(long int num, int base, int flags)
 }
 
 /**
- * remove_comments function replace '#' to '\0'
- * @buf address of modify string
- * return always (0);
+ * remove_comments - function replace '#' to '\0'
+ * @buf: address of modify string
+ * Return always (0);
  */
 void remove_comments(char *buf)
 {
@@ -132,7 +130,7 @@ void remove_comments(char *buf)
 	for (n = 0; buf[n] != '\0'; n++)
 		if (buf[n] == '#' && (!n || buf[n - 1] == ''))
 		{
-			buf[n] ='\0';
+			buf[n] = '\0';
 			break;
 		}
 }

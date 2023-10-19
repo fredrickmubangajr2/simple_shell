@@ -15,7 +15,7 @@
 /* read/write buffer */
 #define READ_BUF_SIZE	1024
 #define WRITE_BUF_SIZE	1024
-#define BUF_FLUSH 	-1
+#define BUF_FLUSH	-1
 
 /* command chaining */
 #define CMD_NORM	0
@@ -28,17 +28,18 @@
 #define CONVERT_UNSIGNED	2
 
 /* if using system getline ( ) */
-#define USE_GETLINE 	0
-#define USE_STRTOK 	0
+#define USE_GETLINE	0
+#define USE_STRTOK	0
 #define HIST_FILE	".simple_shell_history"
 #define HIST_MAX	4096
 extern char **environ;
 
 /**
- * struct liststr singly list linked
- * @str str
- * @next points the next node
- * @num num field
+ * listtstr - singly list linked
+ * @str: str
+ * @liststr: str
+ * @next: points the next node
+ * @num: num field
  */
 typedef struct liststr
 {
@@ -49,25 +50,25 @@ typedef struct liststr
 list_t;
 
 /**
- * struct passinfo pseudo arguement to pass into  function
- * @arg str generated from getline contains arguement
- * @argv array str generate from arg
- * @argc argument count
- * @path str path for current cmd
- * @line_count error count
- * @linecount_flag if on count line input
- * @err_num error code exit()s
- * @env linked list local cpy environ
- * @environ custom modify cpy environ from LL env
- * @env_changed on if environ was changed
- * @fname program filename
- * @history history node
- * @histcount history line num count
- * @alias alias node
- * @status return status last exec'd cmd
- * @readfd fd from which read line input
- * @cmd_buf address pointer to cmd_buf if chaining on
- * @cmd_buf_type CMD_type || &&
+ * struct passinfo - pseudo arguement to pass into  function
+ * @arg: str generated from getline contains arguement
+ * @argv: array str generate from arg
+ * @argc: argument count
+ * @path: str path for current cmd
+ * @line_count: error count
+ * @linecount_flag: if on count line input
+ * @err_num: error code exit()s
+ * @env: linked list local cpy environ
+ * @environ: custom modify cpy environ from LL env
+ * @env_changed: on if environ was changed
+ * @fname: program filename
+ * @history: history node
+ * @histcount: history line num count
+ * @alias: alias node
+ * @status: return status last exec'd cmd
+ * @readfd: fd from which read line input
+ * @cmd_buf: address pointer to cmd_buf if chaining on
+ * @cmd_buf_type: CMD_type || &&
  */
 typedef struct passinfo
 {
@@ -96,9 +97,10 @@ info_t;
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 		0, 0, 0}
 /**
- * struct builtin contains builtin str & related func
- * @type builtin cmd flag
- * @func function
+ * struct  builtin -  contains builtin str & related func
+ * @type: builtin cmd flag
+ * @func: function
+ * @struck builtin
  */
 typedef struct builtin
 {

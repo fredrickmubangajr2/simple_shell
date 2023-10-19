@@ -1,15 +1,16 @@
 #include "shell.h"
 
 /**
- * is_chain test if current char in buffer a chain delimeter
- * @info paremeter struct
- * @p address currentposition
- * @bufchar buffer
- * returnif chain delimiter 1 othewise 0
+ * is_chain - test if current char in buffer a chain delimeter
+ * @info: paremeter struct
+ * @p: address currentposition
+ * @buf: char buffer
+ * Return: if chain delimiter 1, othewise 0
  */
 int is_chain(info_t *info, char *buf, size_t *p)
 {
 	size_t k = *p;
+
 	if (buf[k] == '|' && buf[k + 1] == '|')
 	{
 		buf[k] = 0;
@@ -34,17 +35,18 @@ int is_chain(info_t *info, char *buf, size_t *p)
 }
 
 /**
- * check_chain checks the continued chaining based on last status
- * @info parameter struct
- * @buf char buffer
- * @p address current position in buf
- * @n start position in buf
- * @len length of buf
- * return void
+ * check_chain - checks the continued chaining based on last status
+ * @info: parameter struct
+ * @buf: char buffer
+ * @p: address current position in buf
+ * @n: start position in buf
+ * @len: length of buf
+ * Return: void
  */
 void check_chain(info_t *info, char *buf, size_t *p, size_t n, size_t len)
 {
 	size_t k = *p;
+
 	if (info->cmd_buf_type == CMD_AND)
 	{
 		if (info->status)
@@ -57,17 +59,17 @@ void check_chain(info_t *info, char *buf, size_t *p, size_t n, size_t len)
 	{
 		if (!info->status)
 		{
-			buf[n]= 0;
-			k =len;
+			buf[n] = 0;
+			k = len;
 		}
 	}
 	*p = k;
 }
 
 /**
- * replace_alias replace aliases in tokenized str
- * @info the parameter struct
- * return if replaced 1 othewuse 0
+ * replace_alias - replace aliases in tokenized str
+ * @info: parameter struct
+ * Return: if replaced 1 othewuse 0
  */
 int replace_alias(info_t *info)
 {
@@ -93,16 +95,16 @@ int replace_alias(info_t *info)
 }
 
 /**
- * replace_vars replace vars in the tokenized str
- * @info the parameter structure
- * return ifreplaced 1 otherwise 0
+ * replace_vars - replace vars in the tokenized str
+ * @info: parameter structure
+ * Return: ifreplaced 1 otherwise 0
  */
 int replace_vars(info_t *info)
 {
 	int n = 0;
 	list_t *node;
 
-	for(n = 0; info->argv[n]; n++)
+	for (n = 0; info->argv[n]; n++)
 	{
 		if (info->argv[n][0] != '$' || !info->argv[n][1])
 			continue;
@@ -110,7 +112,7 @@ int replace_vars(info_t *info)
 		if (!_strcmp(info->argv[n], "$?"))
 		{
 			replace_string(&(info->argv[n]),
-					_strdup(convert_number(info->status, 10,0)));
+					_strdup(convert_number(info->status, 10, 0)));
 			continue;
 		}
 		if (!_strcmp(info->argv[n], "$$"))
@@ -123,7 +125,7 @@ int replace_vars(info_t *info)
 		if (node)
 		{
 			replace_string(&(info->argv[n],
-						_strdup(_strchr(node->str, '=')+ 1)));
+						_strdup(_strchr(node->str, '=') + 1)));
 			continue;
 		}
 		replace_string(&info->argv[n], _strdup(""));
@@ -132,12 +134,12 @@ int replace_vars(info_t *info)
 }
 
 /**
- * replace_string replace string
- * @old address of old str
- * @new new str
- * return ifreplaced 1 otherwise 0
+ * replace_string - replace string
+ * @old: address of old str
+ * @new: new str
+ * Return: if replaced 1 otherwise 0
  */
-int replace_string(char**old, char *new)
+int replace_string(char **old, char *new)
 {
 	free(*old);
 	*old = new;

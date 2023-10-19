@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * bfree free pointer & the addess is NULL
- * @ptr address of pointer freed
- * return if freed 1 otherwise 0
+ * bfree - free pointer & the addess is NULL
+ * @ptr: address of pointer freed
+ * Return: if freed 1 otherwise 0
  */
 int bfree(void **ptr)
 {

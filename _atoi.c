@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * interactive return true if shell is interactive mode
+ * interactive - return true if shell is interactive mode
  * @info: struct address
- * return if interactive mode 1 otherwise 0
+ * Return: if interactive mode 1 otherwise 0
  */
 int interactive(info_t *info)
 {
@@ -11,10 +11,10 @@ int interactive(info_t *info)
 }
 
 /**
- * is_delim checks if char delimeter
- * @c the char to check
- * @delim the delimeter str
- * return if true 1 if false 0
+ * is_delim - checks if char delimeter
+ * @c: the char to check
+ * @delim: the delimeter str
+ * Return: if true 1 if false 0
  */
 int is_delim(char c, char *delim)
 {
@@ -25,9 +25,9 @@ int is_delim(char c, char *delim)
 }
 
 /**
- * _isalpha check alphabetic character
- * @c char input
- * return if c is alphabetic otherwise 1
+ * _isalpha - check alphabetic character
+ * @c: char input
+ * Return: if c is alphabetic otherwise 1
  */
 
 int _isalpha(int c)
@@ -39,9 +39,9 @@ int _isalpha(int c)
 }
 
 /**
- * _atoi convert str integer
- * @s str to be converted
- * return if no numbers in str 0 converted number otherwise
+ * _atoi - convert str integer
+ * @s: str to be converted
+ * Return: if no numbers in str 0 converted number otherwise
  */
 
 int _atoi(char *s)

@@ -1,17 +1,18 @@
 #include "shell.h"
 
 /**
- * get_history_file get history files
- * @info parameter struct
- * return allocated  str of historyfile
+ * get_history_file - get history files
+ * @info: parameter struct
+ * Return: allocated  str of historyfile
  */
 char *get_history_file(info_t *info)
 {
 	char *buf, *dir;
+
 	dir = _getenv(info, "HOME=");
 	if (!dir)
 		return (NULL);
-	buf = malloc(sizeof(char) *(_strlen(dir) + _strlen(HIST_FILE) + 2));
+	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
 	if (!buf)
 		return (NULL);
 	buf[0] = 0;
@@ -23,9 +24,9 @@ char *get_history_file(info_t *info)
 
 
 /**
- * write_history create || append to an existing file.
- * @info parameter structure
- * return onsucess (1) else (-1)
+ * write_history -create || append to an existing file.
+ * @info: parameter structure
+ * Return: onsucess (1) else (-1)
  */
 int write_history(info_t *info)
 {
@@ -50,9 +51,9 @@ int write_history(info_t *info)
 }
 
 /**
- * read_history reads hist from file.
- * @info parametere structure
- * return hist_count on success otherwise 0
+ * read_history - reads hist from file.
+ * @info: parametere structure
+ * Return: hist_count on success otherwise 0
  */
 int read_history(info_t *info)
 {
@@ -78,15 +79,15 @@ int read_history(info_t *info)
 	buf[fsize] = 0;
 	if (rdlen <= 0)
 		return (free(buf), 0);
-	close (fd);
+	close(fd);
 	for (n = 0; n < fsize; n++)
 		if (buf[n] == '\n')
 		{
-			buf[n]= 0;
+			buf[n] = 0;
 			buid_history_list(info, buf + last, linecount++);
 			last = n + 1;
 		}
-	if (last ! = n)
+	if (last != n)
 		buid_history_list(info, buf + last, linecount++);
 	free(buf);
 	info->histcount = linecount;
@@ -97,17 +98,18 @@ int read_history(info_t *info)
 }
 
 /**
- * buid_history_list adds new entry to linkrx history list
- * @info struct containging potential arguments
- * @linecount history lincount
- * @buf buffer
- * return always 0
+ * buid_history_list - adds new entry to linkrx history list
+ * @info: struct containging potential arguments
+ * @linecount: history lincount
+ * @buf: buffer
+ * Return: always 0
  */
 int buid_history_list(info_t *info, char *buf, int linecount)
 {
 	list_t *node = NULL;
-	if(info->history)
-		node= info->history;
+
+	if (info->history)
+		node = info->history;
 	add_node_end(&node, buf, linecount);
 
 	if (!info->history)
@@ -116,14 +118,14 @@ int buid_history_list(info_t *info, char *buf, int linecount)
 }
 
 /**
- * renumber_history renumbers after changes the linkrd history files
- * @info  struct containing arguments
- * return new  histcount
+ * renumber_history - renumbers after changes the linkrd history files
+ * @info: struct containing arguments
+ * Return: new  histcount
  */
 int renumber_history(info_t *info)
 {
 	list_t *node = info->history;
-	int n =0;
+	int n = 0;
 
 	while (node)
 	{

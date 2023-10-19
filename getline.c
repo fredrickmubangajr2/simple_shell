@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * input_buf buffers chained cmd
- * @info parameter structure
- * @buf address of buffer
- * @len address of len var
- * return bytes
+ * input_buf - buffers chained cmd
+ * @info: parameter structure
+ * @buf: address of buffer
+ * @len: address of len var
+ * Return: bytes
  */
 ssize_t input_buf(info_t *info, char **buf, size_t *len)
 {
@@ -42,9 +42,9 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 }
 
 /**
- * get_input gets a line minus the newline.
- * @info parameter structure
- * return  bytes read
+ * get_input - gets a line minus the newline.
+ * @info: parameter structure
+ * Return: bytes read
  */
 
 ssize_t get_input(info_t *info)
@@ -56,9 +56,9 @@ ssize_t get_input(info_t *info)
 
 	_putchar(BUF_FLUSH);
 	r = input_buf(info, &buf, &len);
-	if(r == -1)
+	if (r == -1)
 		return (-1);
-	if(len)
+	if (len)
 	{
 		k = n;
 		p = buf + n;
@@ -86,16 +86,17 @@ ssize_t get_input(info_t *info)
 }
 
 /**
- * read_buf reads buffer
- * @info parameter structure
- * @buf buffer
- * @n size
- * return r
+ * read_buf - reads buffer
+ * @info: parameter structure
+ * @buf: buffer
+ * @n: size
+ * Return: r
  */
 ssize_t read_buf(info_t *info, char *buf, size_t *n)
 {
 	ssize_t r = 0;
-	if(*n)
+
+	if (*n)
 		return (0);
 	r = read(info->readfd, buf, READ_BUF_SIZE);
 	if (r >= 0)
@@ -104,11 +105,11 @@ ssize_t read_buf(info_t *info, char *buf, size_t *n)
 }
 
 /**
- * _getline get next line of input from STDIN
- * @info parameter structure
- * @ptr address of pointer to buffer || NULL
- * @length size ptr buffer if not NULL
- * return s
+ * _getline - get next line of input from STDIN
+ * @info: parameter structure
+ * @ptr: address of pointer to buffer || NULL
+ * @length: size ptr buffer if not NULL
+ * Return: s
  */
 int _getline(info_t *info, char **ptr, size_t *length)
 {
@@ -149,9 +150,9 @@ int _getline(info_t *info, char **ptr, size_t *length)
 }
 
 /**
- * sigintHandler block ctrl-C
- * @sig_num the signal num
- * return void
+ * sigintHandler - block ctrl-C
+ * @sig_num: the signal num
+ * Return: void
  */
 void sigintHandler(__attribute__((unused))int sig_num)
 {
@@ -159,4 +160,3 @@ void sigintHandler(__attribute__((unused))int sig_num)
 	_puts("$ ");
 	_putchar(BUF_FLUSH);
 }
-				

@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * get_environ return str array cpy of our env
- * @info structure containing potetial arguements.
- * return always (0)
+ * get_environ - return str array cpy of our env
+ * @info: structure containing potetial arguements.
+ * Return: always (0)
  */
 char **get_environ(info_t *info)
 {
@@ -17,10 +17,10 @@ char **get_environ(info_t *info)
 }
 
 /**
- * _unsetenv remove environment var
- * @info structure containing potential arguments
- * return 1 delete and 0 otherwise
- * @var str env var property
+ * _unsetenv - remove environment var
+ * @info: structure containing potential arguments
+ * Return: 1 delete and 0 otherwise
+ * @var: str env var property
  */
 int _unsetenv(info_t *info, char *var)
 {
@@ -48,11 +48,10 @@ int _unsetenv(info_t *info, char *var)
 }
 
 /**
- * _setenv initialize new env var
- * @info structure containing potetial arguements
- * @var str env var properties
- * @value str enveroment variable value.
- * return always 0
+ * _setenv - initialize new env var
+ * @info: structure containing potetial arguements
+ * @value: str enveroment variable value.
+ * Return: always 0
  */
 int _setenv(info_t *info, char *var char *value)
 {
